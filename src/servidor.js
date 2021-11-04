@@ -2,7 +2,10 @@ var porta = 3003;
 
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 var bancoDeDados = require('./bancoDeDados');
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/produtos', function (req, res) {
   res.send(bancoDeDados.getProdutos());
