@@ -23,6 +23,20 @@ app.post('/produtos', function (req, res) {
   res.send(produto);
 })
 
+app.put('/produtos/:id', function (req, res) {
+  const produto = bancoDeDados.salvarProduto({
+    id: req.params.id,
+    nome: req.body.nome,
+    preco: req.body.preco
+  })
+  res.send(produto);
+})
+
+app.delete('/produtos/:id', function (req, res) {
+  const produto = bancoDeDados.excluirProduto(req.params.id);
+  res.send(produto);
+})
+
 app.listen(porta, function () {
   console.log(`Servidor rodando na porta ${porta}.`);
 })
